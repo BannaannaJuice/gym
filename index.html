@@ -2038,6 +2038,9 @@ canvas.confetti { position: fixed; inset: 0; z-index: 70; pointer-events: none; 
     let u;
     try { u = new URL(($('#c-link') || {}).value.trim()); } catch (e) { u = null; }
     const apiUrl = u && u.searchParams.get('api'), k = u && u.searchParams.get('key');
+    if (u && u.hostname === 'script.google.com' && /\/exec$/.test(u.pathname)) {
+      return showConnect('That\'s your web app URL. Paste it in your Google Sheet under Gym → Install on iPhone: that adds your key and gives you the install link (and QR code).');
+    }
     if (!apiUrl || !k || !/^https:\/\/script\.google\.com\//.test(apiUrl)) return showConnect('That isn\'t the install link. It contains ?api=…&key=…');
     store.set('api', apiUrl); store.set('key', k);
     try { history.replaceState(null, '', location.pathname + '?api=' + encodeURIComponent(apiUrl) + '&key=' + encodeURIComponent(k)); } catch (e) { /* fine */ }

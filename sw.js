@@ -1,6 +1,6 @@
 /* Gym service worker: keeps the app itself on the phone so it opens with no signal.
    Your data is not cached here — the app keeps its own copy and a queue of unsaved entries. */
-const CACHE = 'gym-7f1d3390a3';
+const CACHE = 'gym-765718df2a';
 const SHELL = ['./', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
